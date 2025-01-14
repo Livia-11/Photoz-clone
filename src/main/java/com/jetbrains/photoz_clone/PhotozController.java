@@ -4,13 +4,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 
 public class PhotozController {
 
-    private List<Photo> db = List.of(new Photo("1","hello.jpg"));
+    private Map<String, Photo> db = new HashMap<>(){{
+        put("1", new Photo("1","hello.jpg"));
+    }};
+
 
     @GetMapping("/")
     public String hello(){
@@ -18,12 +23,12 @@ public class PhotozController {
     }
 
     @GetMapping("/photoz")
-    public List<Photo> get(){
-        return db;
+    public Collection<Photo> get(){
+        return db.values();
     }
 
     @GetMapping("/photoz{id}")
-    public List<Photo> get(@PathVariable String id){
-        return db;
+    public Photo get(@PathVariable String id){
+        return db.get(id);
     }
 }
