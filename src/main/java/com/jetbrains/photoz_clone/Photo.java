@@ -8,6 +8,9 @@ public class Photo {
 
     //raw data
 
+    public Photo (){
+    }
+
     public Photo(String id, String fileName) {
         this.id = id;
         this.fileName = fileName;
