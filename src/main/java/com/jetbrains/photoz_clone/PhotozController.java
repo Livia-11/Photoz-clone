@@ -43,9 +43,10 @@ public class PhotozController {
     }
 
     @PostMapping("/photoz/")
-    public void create(Photo photo){
+    public Photo create(Photo photo){
         photo.setId(UUID.randomUUID().toString());
         db.put(photo.getId(), photo);
+        return photo;
     }
 
 }
