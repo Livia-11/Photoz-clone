@@ -12,7 +12,7 @@
 <button id="upload-button" onclick="uploadFile()"> Upload </button>
 
 <script>
-    async function uploadPhoto(){
+    async function uploadFile(){
          let formData = new FormData();
          formData.append("data", fileupload.files[0]);
          await fetch('http://localhost:8080/photoz', {
