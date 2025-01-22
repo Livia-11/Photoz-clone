@@ -1,10 +1,7 @@
 package com.jetbrains.photoz_clone;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
@@ -32,7 +29,7 @@ public class PhotozController {
 
     @GetMapping("/photoz{id}")
     public Photo get(@PathVariable String id){
-        Photo photo = db.get(id);
+        Photo photo = (Photo) db.values();
         if(photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         return photo;
     }
@@ -43,4 +40,10 @@ public class PhotozController {
         if(photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
     }
+
+    @PostMapping("/photoz/")
+    public void create(Photo photo){
+        db.put(photo.getId(), photo);
+    }
+
 }
