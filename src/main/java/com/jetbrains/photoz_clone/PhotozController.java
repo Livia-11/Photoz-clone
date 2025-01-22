@@ -2,6 +2,7 @@ package com.jetbrains.photoz_clone;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
@@ -43,7 +44,7 @@ public class PhotozController {
     }
 
     @PostMapping("/photoz/")
-    public Photo create(@RequestBody Photo photo){//@valid
+    public Photo create(MultipartFile file){//@valid
         photo.setId(UUID.randomUUID().toString());
         db.put(photo.getId(), photo);
         return photo;
