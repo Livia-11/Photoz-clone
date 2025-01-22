@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 
@@ -43,6 +44,7 @@ public class PhotozController {
 
     @PostMapping("/photoz/")
     public void create(Photo photo){
+        photo.setId(UUID.randomUUID().toString());
         db.put(photo.getId(), photo);
     }
 
