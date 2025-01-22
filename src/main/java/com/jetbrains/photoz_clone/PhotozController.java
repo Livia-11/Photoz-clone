@@ -43,7 +43,7 @@ public class PhotozController {
     }
 
     @PostMapping("/photoz/")
-    public Photo create(@RequestBody Photo photo){
+    public Photo create(@RequestBody Photo photo){//@valid
         photo.setId(UUID.randomUUID().toString());
         db.put(photo.getId(), photo);
         return photo;
